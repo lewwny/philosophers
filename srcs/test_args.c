@@ -6,7 +6,7 @@
 /*   By: lengarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:20:28 by lengarci          #+#    #+#             */
-/*   Updated: 2025/05/22 18:28:36 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/05/22 18:54:20 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,16 @@ int	test_args(char **argv, int argc, t_philo *philo)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	if (!test_count_args(argc))
 		return (0);
 	while (argv[i])
 	{
 		if (!test_argv(argv[i]))
+		{
+			ft_puterror("Error\nWrite only positive numbers\n");
 			return (0);
+		}
 		i++;
 	}
 	if (argc == 6)

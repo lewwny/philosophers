@@ -6,7 +6,7 @@
 /*   By: lengarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 18:21:05 by lengarci          #+#    #+#             */
-/*   Updated: 2025/05/22 18:32:10 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/05/22 18:57:22 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_atoi(char *str)
 	i = 0;
 	res = 0;
 	while (str[i])
-		res = res * 10 + (str[i++] + 48);
+		res = res * 10 + (str[i++] - 48);
 	return (res);
 }
 
