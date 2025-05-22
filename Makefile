@@ -6,7 +6,7 @@
 #    By: lengarci <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/22 17:10:42 by lengarci          #+#    #+#              #
-#    Updated: 2025/05/22 18:31:52 by lengarci         ###   ########.fr        #
+#    Updated: 2025/05/22 19:04:58 by lengarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ GREEN 		= \033[0;32m
 BLUE   		= \033[0;34m
 YELLOW		= \033[1;33m
 
-SRCS   	 	= srcs/main.c srcs/test_args.c srcs/utils.c
+SRCS   	 	= srcs/main.c srcs/test_args.c srcs/utils.c srcs/utils_philo.c
 OBJS  		= $(SRCS:.c=.o)
 NAME  		= philosophers
 INCLUDES	= -Iincludes

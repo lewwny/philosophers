@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils_philo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lengarci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 17:17:58 by lengarci          #+#    #+#             */
-/*   Updated: 2025/05/22 19:06:38 by lengarci         ###   ########.fr       */
+/*   Created: 2025/05/22 19:03:15 by lengarci          #+#    #+#             */
+/*   Updated: 2025/05/22 19:08:25 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-int	main(int argc, char **argv)
+long long	get_time_ms(void)
 {
-	t_philo	philo;
+	struct timeval	tv;
 
-	memset(&philo, 0, sizeof(t_philo));
-	if (!test_args(argv, argc, &philo))
-		return (1);
-	init_args(&philo, argv);
-	return (0);
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000LL + tv.tv_usec / 1000);
 }
