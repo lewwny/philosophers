@@ -6,7 +6,7 @@
 /*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 18:21:05 by lengarci          #+#    #+#             */
-/*   Updated: 2025/06/11 14:08:42 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/11 16:18:00 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	init_args(t_data *data, char **argv)
 	pthread_mutex_t	print_lock;
 
 	pthread_mutex_init(&print_lock, NULL);
+	pthread_mutex_init(&data->state_lock, NULL);
 	data->print_lock = print_lock;
 	data->numbers_philo = ft_atoi(argv[1]);
 	data->time_to_die = ft_atoi(argv[2]);

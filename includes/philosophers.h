@@ -6,7 +6,7 @@
 /*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:11:42 by lengarci          #+#    #+#             */
-/*   Updated: 2025/06/11 15:47:22 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/11 16:17:49 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_data
 	bool			last_param;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_lock;
+	pthread_mutex_t	state_lock;
 	long long		start_time;
 	bool			is_dead;
 }	t_data;
