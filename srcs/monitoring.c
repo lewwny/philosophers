@@ -6,11 +6,36 @@
 /*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 14:35:13 by lengarci          #+#    #+#             */
-/*   Updated: 2025/06/11 16:22:50 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/11 16:52:34 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
+
+static bool	has_philo_eaten_enough(t_philo *philo, t_data *data, int i)
+{
+	bool	done_enough;
+
+	done_enough = false;
+	pthread_mutex_lock(&data->state_lock);
+	if (philo[i].number_of_eat >= data->number_of_eat
+		&& data->last_param)
+		done_enough = true;
+	pthread_mutex_unlock(&data->state_lock);
+	return (done_enough);
+}
+
+static bool	has_philo_died(t_philo *philo, t_data *data, int i)
+{
+	bool	too_long;
+
+	too_long = false;
+	pthread_mutex_lock(&data->state_lock);
+	if (get_time_ms() - philo[i].last_meal_time > data->time_to_die)
+		too_long = true;
+	pthread_mutex_unlock(&data->state_lock);
+	return (too_long);
+}
 
 static int	check_philo_status(t_philo *philo, t_data *data, int *ok)
 {
@@ -19,16 +44,17 @@ static int	check_philo_status(t_philo *philo, t_data *data, int *ok)
 	i = 0;
 	while (i < data->numbers_philo)
 	{
-		if (philo[i].number_of_eat >= data->number_of_eat
-			&& data->last_param)
+		if (has_philo_eaten_enough(philo, data, i))
 		{
 			(*ok)++;
 			i++;
 			continue ;
 		}
-		if (get_time_ms() - philo[i].last_meal_time > data->time_to_die)
+		if (has_philo_died(philo, data, i))
 		{
+			pthread_mutex_lock(&data->state_lock);
 			data->is_dead = true;
+			pthread_mutex_unlock(&data->state_lock);
 			print_dead(&philo[i]);
 			return (1);
 		}

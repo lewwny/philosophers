@@ -6,7 +6,7 @@
 /*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 19:03:15 by lengarci          #+#    #+#             */
-/*   Updated: 2025/06/11 14:43:43 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/11 16:45:01 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ void	print_action(t_philo *philo, const char *action)
 
 	pthread_mutex_lock(&philo->data->print_lock);
 	time = get_time_ms() - philo->data->start_time;
+	pthread_mutex_lock(&philo->data->state_lock);
 	if (!philo->data->is_dead)
 		printf("%lld %d %s\n", time, philo->id, action);
+	pthread_mutex_unlock(&philo->data->state_lock);
 	pthread_mutex_unlock(&philo->data->print_lock);
 }
 

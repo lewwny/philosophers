@@ -6,7 +6,7 @@
 /*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:47:00 by lengarci          #+#    #+#             */
-/*   Updated: 2025/06/11 16:18:17 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/11 16:45:44 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,13 @@ void	*routine(void *arg)
 	}
 	while (1)
 	{
+		pthread_mutex_lock(&philo->data->state_lock);
 		if (philo->data->is_dead)
+		{
+			pthread_mutex_unlock(&philo->data->state_lock);
 			return (NULL);
+		}
+		pthread_mutex_unlock(&philo->data->state_lock);
 		if (!philo_eat(philo))
 			return (NULL);
 		print_action(philo, "is sleeping");
