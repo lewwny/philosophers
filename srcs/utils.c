@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lengarci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 18:21:05 by lengarci          #+#    #+#             */
-/*   Updated: 2025/05/22 18:57:22 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/11 14:08:42 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,18 @@ static int	ft_atoi(char *str)
 	return (res);
 }
 
-void	init_args(t_philo *philo, char **argv)
+void	init_args(t_data *data, char **argv)
 {
-	philo->numbers_philo = ft_atoi(argv[1]);
-	philo->time_to_die = ft_atoi(argv[2]);
-	philo->time_to_eat = ft_atoi(argv[3]);
-	philo->time_to_sleep = ft_atoi(argv[4]);
-	if (philo->last_param)
-		philo->number_of_eat = ft_atoi(argv[5]);
+	pthread_mutex_t	print_lock;
+
+	pthread_mutex_init(&print_lock, NULL);
+	data->print_lock = print_lock;
+	data->numbers_philo = ft_atoi(argv[1]);
+	data->time_to_die = ft_atoi(argv[2]);
+	data->time_to_eat = ft_atoi(argv[3]);
+	data->time_to_sleep = ft_atoi(argv[4]);
+	if (data->last_param)
+		data->number_of_eat = ft_atoi(argv[5]);
+	else
+		data->number_of_eat = -1;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_args.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lengarci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:20:28 by lengarci          #+#    #+#             */
-/*   Updated: 2025/05/22 18:54:20 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/11 13:20:46 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	test_argv(char *str)
 	return (1);
 }
 
-int	test_args(char **argv, int argc, t_philo *philo)
+int	test_args(char **argv, int argc, t_data *data)
 {
 	int	i;
 
@@ -70,8 +70,8 @@ int	test_args(char **argv, int argc, t_philo *philo)
 		i++;
 	}
 	if (argc == 6)
-		philo->last_param = 1;
+		data->last_param = 1;
 	else
-		philo->last_param = 0;
+		data->last_param = 0;
 	return (1);
 }

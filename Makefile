@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lengarci <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/22 17:10:42 by lengarci          #+#    #+#              #
-#    Updated: 2025/05/22 19:04:58 by lengarci         ###   ########.fr        #
+#    Updated: 2025/06/11 14:39:37 by lengarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ GREEN 		= \033[0;32m
 BLUE   		= \033[0;34m
 YELLOW		= \033[1;33m
 
-SRCS   	 	= srcs/main.c srcs/test_args.c srcs/utils.c srcs/utils_philo.c
+SRCS   	 	= srcs/main.c srcs/test_args.c srcs/utils.c srcs/utils_philo.c \
+			srcs/monitoring.c
 OBJS  		= $(SRCS:.c=.o)
 NAME  		= philosophers
 INCLUDES	= -Iincludes

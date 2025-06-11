@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lengarci <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:11:42 by lengarci          #+#    #+#             */
-/*   Updated: 2025/05/22 19:08:14 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/11 14:38:07 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <sys/time.h>
 # include <stdbool.h>
 
-typedef struct s_philo
+typedef struct s_data
 {
 	int		numbers_philo;
 	int		time_to_die;
@@ -29,10 +29,27 @@ typedef struct s_philo
 	int		time_to_sleep;
 	int		number_of_eat;
 	bool	last_param;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	print_lock;
+	long long	start_time;
+	bool	is_dead;
+}	t_data;
+
+typedef struct s_philo
+{
+	int		id;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	t_data	*data;
+	long long		last_meal_time;
+	pthread_t	thread;
 }	t_philo;
 
-int			test_args(char **argv, int argc, t_philo *philo);
+int			test_args(char **argv, int argc, t_data *data);
 long long	get_time_ms(void);
-void		init_args(t_philo *philo, char **argv);
+void		init_args(t_data *data, char **argv);
+void	print_action(t_philo *philo, const char *action);
+void	print_dead(t_philo *philo);
+void	*monitoring(void *arg);
 
 #endif
