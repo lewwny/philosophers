@@ -6,7 +6,7 @@
 /*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:11:42 by lengarci          #+#    #+#             */
-/*   Updated: 2025/06/11 14:38:07 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/11 15:47:22 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,33 +23,36 @@
 
 typedef struct s_data
 {
-	int		numbers_philo;
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		number_of_eat;
-	bool	last_param;
+	int				numbers_philo;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				number_of_eat;
+	bool			last_param;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_lock;
-	long long	start_time;
-	bool	is_dead;
+	long long		start_time;
+	bool			is_dead;
 }	t_data;
 
 typedef struct s_philo
 {
-	int		id;
+	int				id;
+	int				number_of_eat;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	t_data	*data;
+	t_data			*data;
 	long long		last_meal_time;
-	pthread_t	thread;
+	pthread_t		thread;
 }	t_philo;
 
 int			test_args(char **argv, int argc, t_data *data);
 long long	get_time_ms(void);
 void		init_args(t_data *data, char **argv);
-void	print_action(t_philo *philo, const char *action);
-void	print_dead(t_philo *philo);
-void	*monitoring(void *arg);
+void		print_action(t_philo *philo, const char *action);
+void		print_dead(t_philo *philo);
+void		*monitoring(void *arg);
+void		init_philos(t_data *data);
+void		*routine(void *arg);
 
 #endif
