@@ -6,7 +6,7 @@
 /*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:11:42 by lengarci          #+#    #+#             */
-/*   Updated: 2025/06/11 16:17:49 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/11 18:04:04 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void		init_args(t_data *data, char **argv);
 void		print_action(t_philo *philo, const char *action);
 void		print_dead(t_philo *philo);
 void		*monitoring(void *arg);
-void		init_philos(t_data *data);
+int			init_philos(t_data *data);
 void		*routine(void *arg);
+int			thread_create(t_philo *philosophers, t_data *data);
+int			init_forks(t_data *data);
 
 #endif

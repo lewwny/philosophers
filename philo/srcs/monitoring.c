@@ -6,7 +6,7 @@
 /*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 14:35:13 by lengarci          #+#    #+#             */
-/*   Updated: 2025/06/11 16:52:34 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/11 17:57:28 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ static int	check_philo_status(t_philo *philo, t_data *data, int *ok)
 		}
 		if (has_philo_died(philo, data, i))
 		{
-			pthread_mutex_lock(&data->state_lock);
+			pthread_mutex_lock(&data->print_lock);
 			data->is_dead = true;
-			pthread_mutex_unlock(&data->state_lock);
 			print_dead(&philo[i]);
+			pthread_mutex_unlock(&data->print_lock);
 			return (1);
 		}
 		i++;
@@ -78,7 +78,8 @@ void	*monitoring(void *arg)
 			return (NULL);
 		if (ok == data->numbers_philo)
 			return (NULL);
-		usleep(1000);
+		if (usleep(1000) != 0)
+			return (NULL);
 	}
 	return (NULL);
 }
