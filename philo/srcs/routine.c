@@ -6,7 +6,7 @@
 /*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:47:00 by lengarci          #+#    #+#             */
-/*   Updated: 2025/06/11 17:49:12 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/12 09:34:37 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,11 @@ static int	handle_one_philo(t_philo *philo)
 static void	philo_take_forks(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
-	{
-		pthread_mutex_lock(philo->left_fork);
-		print_action(philo, "has taken a fork");
-		pthread_mutex_lock(philo->right_fork);
-		print_action(philo, "has taken a fork");
-	}
-	else
-	{
-		pthread_mutex_lock(philo->right_fork);
-		print_action(philo, "has taken a fork");
-		pthread_mutex_lock(philo->left_fork);
-		print_action(philo, "has taken a fork");
-	}
+		usleep(1000);
+	pthread_mutex_lock(philo->left_fork);
+	print_action(philo, "has taken a fork");
+	pthread_mutex_lock(philo->right_fork);
+	print_action(philo, "has taken a fork");
 }
 
 static int	philo_eat(t_philo *philo)
