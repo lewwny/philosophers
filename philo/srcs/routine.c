@@ -6,7 +6,7 @@
 /*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:47:00 by lengarci          #+#    #+#             */
-/*   Updated: 2025/06/12 09:34:37 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/15 10:41:15 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,24 @@ static int	handle_one_philo(t_philo *philo)
 
 static void	philo_take_forks(t_philo *philo)
 {
+	pthread_mutex_t	*first;
+	pthread_mutex_t	*second;
+
 	if (philo->id % 2 == 0)
 		usleep(1000);
-	pthread_mutex_lock(philo->left_fork);
+	if (philo->left_fork < philo->right_fork)
+	{
+		first = philo->left_fork;
+		second = philo->right_fork;
+	}
+	else
+	{
+		first = philo->right_fork;
+		second = philo->left_fork;
+	}
+	pthread_mutex_lock(first);
 	print_action(philo, "has taken a fork");
-	pthread_mutex_lock(philo->right_fork);
+	pthread_mutex_lock(second);
 	print_action(philo, "has taken a fork");
 }
 

@@ -6,7 +6,7 @@
 /*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 19:03:15 by lengarci          #+#    #+#             */
-/*   Updated: 2025/06/11 18:03:41 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/15 09:08:47 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ void	print_dead(t_philo *philo)
 {
 	long long	time;
 
+	pthread_mutex_lock(&philo->data->state_lock);
 	time = get_time_ms() - philo->data->start_time;
 	printf("%lld %d died\n", time, philo->id);
+	pthread_mutex_unlock(&philo->data->state_lock);
 }
 
 int	thread_create(t_philo *philosophers, t_data *data)

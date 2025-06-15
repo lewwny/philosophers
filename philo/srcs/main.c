@@ -6,7 +6,7 @@
 /*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:17:58 by lengarci          #+#    #+#             */
-/*   Updated: 2025/06/11 17:39:28 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/15 09:10:46 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ int	main(int argc, char **argv)
 		return (1);
 	init_args(&data, argv);
 	data.start_time = get_time_ms();
+	if (data.number_of_eat < 1 && data.last_param)
+	{
+		pthread_mutex_destroy(&data.print_lock);
+		pthread_mutex_destroy(&data.state_lock);
+		return (0);
+	}
 	if (!init_philos(&data))
 	{
 		write(2, "Error initializing philosophers\n", 33);
