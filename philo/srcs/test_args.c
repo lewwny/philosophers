@@ -6,7 +6,7 @@
 /*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:20:28 by lengarci          #+#    #+#             */
-/*   Updated: 2025/06/11 13:20:46 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/20 09:23:03 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,10 @@ int	test_args(char **argv, int argc, t_data *data)
 		data->last_param = 1;
 	else
 		data->last_param = 0;
+	if (ft_atoi(argv[1]) < 1)
+	{
+		write(2, "Error\nNumber of philosophers must be at least 1\n", 49);
+		return (0);
+	}
 	return (1);
 }

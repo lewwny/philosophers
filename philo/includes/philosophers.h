@@ -6,7 +6,7 @@
 /*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:11:42 by lengarci          #+#    #+#             */
-/*   Updated: 2025/06/11 18:04:04 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/20 09:23:32 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ int			init_philos(t_data *data);
 void		*routine(void *arg);
 int			thread_create(t_philo *philosophers, t_data *data);
 int			init_forks(t_data *data);
+int			ft_atoi(char *str);
 
 #endif

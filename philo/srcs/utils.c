@@ -6,13 +6,13 @@
 /*   By: lengarci <lengarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 18:21:05 by lengarci          #+#    #+#             */
-/*   Updated: 2025/06/11 17:00:26 by lengarci         ###   ########.fr       */
+/*   Updated: 2025/06/20 09:23:21 by lengarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-static int	ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
 	int	res;
 	int	i;
